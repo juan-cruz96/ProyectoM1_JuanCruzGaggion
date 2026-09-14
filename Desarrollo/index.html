@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generador de paletas | Colorfly Studio</title>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <header class="header-principal">
+      <p class="brand">
+        <strong class="brand__primary">COLORFLY</strong><span class="brand__secondary">STUDIO</span>
+      </p>
+    </header>
+
+    <main class="contenedor-principal">
+      <section class="columna-izquierda">
+        <header class="columna-izquierda__header">
+          <p class="feature-label">
+            <span class="feature-label__brand">
+              <strong>COLORFLY</strong><span>STUDIO</span>
+            </span>
+            <em>NEW FEATURE</em>
+          </p>
+
+          <h1 id="titulo-principal">Generador de<br />paletas de color</h1>
+
+          <div class="columna-izquierda__bajada">
+            <p>Nuevas combinaciones, <strong><em>infinitas posibilidades.</em></strong></p>
+            <br />
+            <p>Jugá con el color y encontrá una paleta que transforme tu próxima idea.</p>
+          </div>
+        </header>
+
+        <form class="formulario-paleta" id="formularioPaleta">
+          <fieldset class="opciones">
+            <legend>Formato</legend>
+
+            <label class="texto-opcion">
+              <input type="radio" name="formato-color" value="hsl" />
+              <span>HSL</span>
+            </label>
+
+            <label class="texto-opcion">
+              <input type="radio" name="formato-color" value="hex" checked />
+              <span>HEX</span>
+            </label>
+          </fieldset>
+
+          <fieldset class="opciones">
+            <legend>Cantidad de colores</legend>
+
+            <label class="texto-opcion">
+              <input type="radio" name="color-cantidad" value="6" />
+              <span>6</span>
+            </label>
+
+            <label class="texto-opcion">
+              <input type="radio" name="color-cantidad" value="8" />
+              <span>8</span>
+            </label>
+
+            <label class="texto-opcion">
+              <input type="radio" name="color-cantidad" value="9" checked />
+              <span>9</span>
+            </label>
+          </fieldset>
+
+          <button class="boton-generar" type="submit">Generar paleta</button>
+        </form>
+      </section>
+
+      <section class="paleta-principal">
+
+  <ul class="lista-colores" id="listaColores">
+
+    <li class="tira-color" style="background-color: #DAE251;">
+      <button type="button">
+        <span class="color-code">#DAE251</span>
+      </button>
+    </li>
+
+    <li class="tira-color" style="background-color: #F4F071;">
+      <button type="button">
+        <span class="color-code">#F4F071</span>
+      </button>
+    </li>
+
+    <li class="tira-color" style="background-color: #FF7BAC;">
+      <button type="button">
+        <span class="color-code">#FF7BAC</span>
+      </button>
+    </li>
+
+    <li class="tira-color" style="background-color: #589AD3;">
+      <button type="button">
+        <span class="color-code">#589AD3</span>
+      </button>
+    </li>
+
+    <li class="tira-color" style="background-color: #FF9469;">
+      <button type="button">
+        <span class="color-code">#FF9469</span>
+      </button>
+    </li>
+
+    <li class="tira-color" style="background-color: #8CC63F;">
+      <button type="button">
+        <span class="color-code">#8CC63F</span>
+      </button>
+    </li>
+
+    <li class="tira-color" style="background-color: #00FD88;">
+      <button type="button">
+        <span class="color-code">#00FD88</span>
+      </button>
+    </li>
+
+    <li class="tira-color" style="background-color: #FF325E;">
+      <button type="button">
+        <span class="color-code">#FF325E</span>
+      </button>
+    </li>
+
+    <li class="tira-color" style="background-color: #22B573;">
+      <button type="button" >
+        <span class="color-code">#22B573</span>
+      </button>
+    </li>
+
+  </ul>
+
+
+  <div class="paleta-chiquita">
+    <span style="background-color: #DAE251;"></span>
+    <span style="background-color: #F4F071;"></span>
+    <span style="background-color: #FF7BAC;"></span>
+    <span style="background-color: #589AD3;"></span>
+    <span style="background-color: #FF9469;"></span>
+    <span style="background-color: #8CC63F;"></span>
+    <span style="background-color: #00FD88;"></span>
+    <span style="background-color: #FF325E;"></span>
+    <span style="background-color: #22B573;"></span>
+  </div>
+
+</section>
+    </main>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
