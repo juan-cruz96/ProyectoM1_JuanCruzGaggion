@@ -17,6 +17,73 @@ function generarColorHex() {
   return color;
 }
 
+function generarColorHsl() {
+
+  const h = Math.floor(Math.random() * 360);
+  const s = Math.floor(Math.random() * 101);
+  const l = Math.floor(Math.random() * 101);
+
+  return {
+    h: h,
+    s: s,
+    l: l
+  };
+}
+
+function convertirHslAHex(h, s, l) {
+
+  s = s / 100;
+  l = l / 100;
+
+  const c = (1 - Math.abs(2 * l - 1)) * s;
+  const x = c * (1 - Math.abs((h / 60) % 2 - 1));
+
+  let r = 0;
+  let g = 0;
+  let b = 0;
+
+  if (h < 60) {
+    r = c;
+    g = x;
+  } else if (h < 120) {
+    r = x;
+    g = c;
+  } else if (h < 180) {
+    g = c;
+    b = x;
+  } else if (h < 240) {
+    g = x;
+    b = c;
+  } else if (h < 300) {
+    r = x;
+    b = c;
+  } else {
+    r = c;
+    b = x;
+  }
+
+  const m = l - c / 2;
+
+  r = Math.round((r + m) * 255);
+  g = Math.round((g + m) * 255);
+  b = Math.round((b + m) * 255);
+
+
+  function convertirAHex(numero) {
+
+    return numero.toString(16).padStart(2, "0");
+
+  }
+
+
+  return (
+    "#" +
+    convertirAHex(r) +
+    convertirAHex(g) +
+    convertirAHex(b)
+  ).toUpperCase();
+
+}
 
 formulario.addEventListener("submit", function (event) {
 
@@ -28,23 +95,47 @@ formulario.addEventListener("submit", function (event) {
 
   const cantidad = Number(cantidadSeleccionada.value);
 
-  tiras.forEach(function (tira, index) {
+  const formatoSeleccionado = document.querySelector(
+  'input[name="formato-color"]:checked'
+);
+
+const formato = formatoSeleccionado.value;
+
+
+ tiras.forEach(function (tira, index) {
 
   if (index < cantidad) {
 
     tira.style.display = "block";
 
-    const color = generarColorHex();
+    const hsl = generarColorHsl();
 
-    tira.style.backgroundColor = color;
+    const hex = convertirHslAHex(
+      hsl.h,
+      hsl.s,
+      hsl.l
+    );
 
-    coloresChiquitos[index].style.backgroundColor = color;
+    const colorHsl =
+      `HSL(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+
+    tira.style.backgroundColor = colorHsl;
+
+    coloresChiquitos[index].style.backgroundColor = colorHsl;
 
     coloresChiquitos[index].style.display = "block";
 
     const codigo = tira.querySelector(".color-code");
 
-    codigo.textContent = color;
+    if (formato === "hex") {
+
+      codigo.textContent = hex;
+
+    } else {
+
+      codigo.textContent = colorHsl;
+
+    }
 
   } else {
 
@@ -54,7 +145,11 @@ formulario.addEventListener("submit", function (event) {
 
   }
 
-  });
+});
+
+  
+
+  
 
   listaColores.style.gridTemplateColumns =
     `repeat(${cantidad}, 1fr)`;
