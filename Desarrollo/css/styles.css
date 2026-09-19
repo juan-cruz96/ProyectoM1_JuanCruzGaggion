@@ -24,6 +24,7 @@ body {
   background-color: var(--white);
   font-family: var(--font-primary);
   -webkit-font-smoothing: antialiased;
+  zoom: 90%;
 }
 
 button,
@@ -269,8 +270,19 @@ h2 {
 }
 
 .color-code {
-  font-size: 15px;
+  font-size: 10px;
   font-weight: 300;
+  
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #202020;
+
+  padding: 4px 2px;
+  border-radius: 8px;
+
+  
+  
+  
+
 }
 
 .tira-color button:hover .color-code {

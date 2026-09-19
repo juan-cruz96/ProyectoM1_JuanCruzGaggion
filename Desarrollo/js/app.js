@@ -115,9 +115,11 @@ const formato = formatoSeleccionado.value;
       hsl.s,
       hsl.l
     );
+tira.dataset.hex = hex;
 
+tira.dataset.hsl = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
     const colorHsl =
-      `HSL(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+      `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
 
     tira.style.backgroundColor = colorHsl;
 
@@ -156,5 +158,33 @@ const formato = formatoSeleccionado.value;
 
   paletaChiquita.style.gridTemplateColumns =
   `repeat(${cantidad}, 1fr)`;  
+
+});
+
+const opcionesFormato = document.querySelectorAll(
+  'input[name="formato-color"]'
+);
+
+opcionesFormato.forEach(function (opcion) {
+
+  opcion.addEventListener("change", function () {
+
+    tiras.forEach(function (tira) {
+
+      const codigo = tira.querySelector(".color-code");
+
+      if (opcion.value === "hex") {
+
+        codigo.textContent = tira.dataset.hex;
+
+      } else {
+
+        codigo.textContent = tira.dataset.hsl;
+
+      }
+
+    });
+
+  });
 
 });
