@@ -104,40 +104,51 @@ const formato = formatoSeleccionado.value;
 
  tiras.forEach(function (tira, index) {
 
+  // Genera un color para cada tira
+
+  const hsl = generarColorHsl();
+
+  const hex = convertirHslAHex(
+    hsl.h,
+    hsl.s,
+    hsl.l
+  );
+
+  const colorHsl =
+    `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+
+  // Guarda ambos formatos
+
+  tira.dataset.hex = hex;
+  tira.dataset.hsl = colorHsl;
+
+  // Asigna los colores
+
+  tira.style.backgroundColor = colorHsl;
+
+  coloresChiquitos[index].style.backgroundColor = colorHsl;
+
+  // Actualiza el codigo visible
+
+  const codigo = tira.querySelector(".color-code");
+
+  if (formato === "hex") {
+
+    codigo.textContent = hex;
+
+  } else {
+
+    codigo.textContent = colorHsl;
+
+  }
+
+  // Muestra solo la cantidad seleccionada
+
   if (index < cantidad) {
 
     tira.style.display = "block";
 
-    const hsl = generarColorHsl();
-
-    const hex = convertirHslAHex(
-      hsl.h,
-      hsl.s,
-      hsl.l
-    );
-tira.dataset.hex = hex;
-
-tira.dataset.hsl = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
-    const colorHsl =
-      `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
-
-    tira.style.backgroundColor = colorHsl;
-
-    coloresChiquitos[index].style.backgroundColor = colorHsl;
-
     coloresChiquitos[index].style.display = "block";
-
-    const codigo = tira.querySelector(".color-code");
-
-    if (formato === "hex") {
-
-      codigo.textContent = hex;
-
-    } else {
-
-      codigo.textContent = colorHsl;
-
-    }
 
   } else {
 
@@ -184,6 +195,74 @@ opcionesFormato.forEach(function (opcion) {
       }
 
     });
+
+  });
+
+});
+
+const opcionesCantidad = document.querySelectorAll(
+  'input[name="color-cantidad"]'
+);
+
+opcionesCantidad.forEach(function (opcion) {
+
+  opcion.addEventListener("change", function () {
+
+    const cantidad = Number(opcion.value);
+
+    tiras.forEach(function (tira, index) {
+
+      if (index < cantidad) {
+
+        tira.style.display = "block";
+
+        coloresChiquitos[index].style.display = "block";
+
+      } else {
+
+        tira.style.display = "none";
+
+        coloresChiquitos[index].style.display = "none";
+
+      }
+
+    });
+
+    listaColores.style.gridTemplateColumns =
+      `repeat(${cantidad}, 1fr)`;
+
+    paletaChiquita.style.gridTemplateColumns =
+      `repeat(${cantidad}, 1fr)`;
+
+  });
+
+});
+
+
+const toast = document.querySelector("#toast");
+
+let temporizadorToast;
+
+tiras.forEach(function (tira) {
+
+  tira.addEventListener("click", function () {
+
+    const codigo = tira.querySelector(".color-code");
+
+    navigator.clipboard.writeText(codigo.textContent)
+      .then(function () {
+
+        toast.classList.add("visible");
+
+        clearTimeout(temporizadorToast);
+
+        temporizadorToast = setTimeout(function () {
+
+          toast.classList.remove("visible");
+
+        }, 2000);
+
+      });
 
   });
 

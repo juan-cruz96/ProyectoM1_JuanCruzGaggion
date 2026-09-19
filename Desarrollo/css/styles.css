@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "Neue Haas Display";
+  src: url("../fonts/NeueHaasDisplayRoman.ttf");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Neue Haas Display";
+  src: url("../fonts/NeueHaasDisplayMediu.ttf");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Neue Haas Display";
+  src: url("../fonts/NeueHaasDisplayBold.ttf");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Neue Haas Display";
+  src: url("../fonts/NeueHaasDisplayBlack.ttf");
+  font-weight: 900;
+}
+
 :root {
   --black: #000;
   --white: #fff;
@@ -270,18 +294,14 @@ h2 {
 }
 
 .color-code {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 300;
   
   background-color: rgba(255, 255, 255, 0.85);
   color: #202020;
 
-  padding: 4px 2px;
+  padding: 3px 2px;
   border-radius: 8px;
-
-  
-  
-  
 
 }
 
@@ -303,4 +323,27 @@ h2 {
 
   overflow: hidden;
   border-radius: 17px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  background-color: #111;
+  color: white;
+
+  padding: 12px 24px;
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.toast.visible {
+  opacity: 1;
 }
