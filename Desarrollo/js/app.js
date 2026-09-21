@@ -1,21 +1,67 @@
+
 const formulario = document.querySelector("#formularioPaleta");
 const tiras = document.querySelectorAll(".tira-color");
 const listaColores = document.querySelector("#listaColores");
 const coloresChiquitos = document.querySelectorAll(".paleta-chiquita span");
 const paletaChiquita = document.querySelector(".paleta-chiquita");
+const toast = document.querySelector("#toast");
 
+// ARRAY PARA GUARDAR LOS BLOQUEOS
 
-function generarColorHex() {
+let coloresBloqueados = [];
 
-  const caracteres = "0123456789ABCDEF";
-  let color = "#";
+// ICONOS DE LOS CANDADOS
 
-  for (let i = 0; i < 6; i++) {
-    const numeroAleatorio = Math.floor(Math.random() * 16);
-    color += caracteres[numeroAleatorio];
-  }
-  return color;
-}
+const iconoCerrado = `
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+  </svg>
+`;
+
+const iconoAbierto = `
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5V6.75a4.5 4.5 0 1 1 9 0v3.75M3.75 21.75h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H3.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+  </svg>
+`;
+
+// CREAR LOS BOTONES DE BLOQUEO
+
+tiras.forEach(function (tira, index) {
+
+  coloresBloqueados[index] = false;
+
+  const botonBloquear = document.createElement("button");
+
+  botonBloquear.type = "button";
+  botonBloquear.classList.add("boton-bloquear");
+  botonBloquear.innerHTML = iconoAbierto;
+  botonBloquear.setAttribute("aria-label", "Bloquear color");
+
+  botonBloquear.addEventListener("click", function (event) {
+
+    event.stopPropagation();
+
+    coloresBloqueados[index] = !coloresBloqueados[index];
+
+    if (coloresBloqueados[index]) {
+
+      botonBloquear.innerHTML = iconoCerrado;
+      botonBloquear.setAttribute("aria-label", "Desbloquear color");
+
+    } else {
+
+      botonBloquear.innerHTML = iconoAbierto;
+      botonBloquear.setAttribute("aria-label", "Bloquear color");
+
+    }
+
+  });
+
+  tira.appendChild(botonBloquear);
+
+});
+
+// GENERAR COLOR HSL
 
 function generarColorHsl() {
 
@@ -28,7 +74,10 @@ function generarColorHsl() {
     s: s,
     l: l
   };
+
 }
+
+// CONVERTIR HSL A HEX
 
 function convertirHslAHex(h, s, l) {
 
@@ -68,13 +117,11 @@ function convertirHslAHex(h, s, l) {
   g = Math.round((g + m) * 255);
   b = Math.round((b + m) * 255);
 
-
   function convertirAHex(numero) {
 
     return numero.toString(16).padStart(2, "0");
 
   }
-
 
   return (
     "#" +
@@ -84,6 +131,8 @@ function convertirHslAHex(h, s, l) {
   ).toUpperCase();
 
 }
+
+// GENERAR PALETA
 
 formulario.addEventListener("submit", function (event) {
 
@@ -96,81 +145,84 @@ formulario.addEventListener("submit", function (event) {
   const cantidad = Number(cantidadSeleccionada.value);
 
   const formatoSeleccionado = document.querySelector(
-  'input[name="formato-color"]:checked'
-);
-
-const formato = formatoSeleccionado.value;
-
-
- tiras.forEach(function (tira, index) {
-
-  // Genera un color para cada tira
-
-  const hsl = generarColorHsl();
-
-  const hex = convertirHslAHex(
-    hsl.h,
-    hsl.s,
-    hsl.l
+    'input[name="formato-color"]:checked'
   );
 
-  const colorHsl =
-    `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+  const formato = formatoSeleccionado.value;
 
-  // Guarda ambos formatos
+  tiras.forEach(function (tira, index) {
 
-  tira.dataset.hex = hex;
-  tira.dataset.hsl = colorHsl;
+    // GENERAR UN NUEVO COLOR SOLO SI NO ESTA BLOQUEADO
 
-  // Asigna los colores
+    if (!coloresBloqueados[index]) {
 
-  tira.style.backgroundColor = colorHsl;
+      const hsl = generarColorHsl();
 
-  coloresChiquitos[index].style.backgroundColor = colorHsl;
+      const hex = convertirHslAHex(
+        hsl.h,
+        hsl.s,
+        hsl.l
+      );
 
-  // Actualiza el codigo visible
+      const colorHsl =
+        `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
 
-  const codigo = tira.querySelector(".color-code");
+      // GUARDAR LOS DOS FORMATOS
 
-  if (formato === "hex") {
+      tira.dataset.hex = hex;
+      tira.dataset.hsl = colorHsl;
 
-    codigo.textContent = hex;
+      // ACTUALIZAR LOS FONDOS
 
-  } else {
+      tira.style.backgroundColor = colorHsl;
 
-    codigo.textContent = colorHsl;
+      coloresChiquitos[index].style.backgroundColor = colorHsl;
 
-  }
+    }
 
-  // Muestra solo la cantidad seleccionada
+    // MOSTRAR EL CODIGO EN EL FORMATO SELECCIONADO
 
-  if (index < cantidad) {
+    const codigo = tira.querySelector(".color-code");
 
-    tira.style.display = "block";
+    if (formato === "hex") {
 
-    coloresChiquitos[index].style.display = "block";
+      codigo.textContent = tira.dataset.hex;
 
-  } else {
+    } else {
 
-    tira.style.display = "none";
+      codigo.textContent = tira.dataset.hsl;
 
-    coloresChiquitos[index].style.display = "none";
+    }
 
-  }
+    // MOSTRAR LA CANTIDAD DE COLORES SELECCIONADA
 
-});
+    if (index < cantidad) {
 
-  
+      tira.style.display = "block";
 
-  
+      coloresChiquitos[index].style.display = "block";
+
+    } else {
+
+      tira.style.display = "none";
+
+      coloresChiquitos[index].style.display = "none";
+
+    }
+
+  });
+
+  // AJUSTAR LAS COLUMNAS DE AMBAS PALETAS
 
   listaColores.style.gridTemplateColumns =
     `repeat(${cantidad}, 1fr)`;
 
   paletaChiquita.style.gridTemplateColumns =
-  `repeat(${cantidad}, 1fr)`;  
+    `repeat(${cantidad}, 1fr)`;
 
 });
+
+// CAMBIAR ENTRE HEX Y HSL SIN GENERAR COLORES NUEVOS
 
 const opcionesFormato = document.querySelectorAll(
   'input[name="formato-color"]'
@@ -199,6 +251,8 @@ opcionesFormato.forEach(function (opcion) {
   });
 
 });
+
+// CAMBIAR ENTRE 6, 8 Y 9 COLORES
 
 const opcionesCantidad = document.querySelectorAll(
   'input[name="color-cantidad"]'
@@ -238,8 +292,7 @@ opcionesCantidad.forEach(function (opcion) {
 
 });
 
-
-const toast = document.querySelector("#toast");
+// COPIAR EL CODIGO DEL COLOR
 
 let temporizadorToast;
 
@@ -267,3 +320,7 @@ tiras.forEach(function (tira) {
   });
 
 });
+
+// GENERAR UNA PALETA INICIAL AL CARGAR LA PAGINA
+
+formulario.requestSubmit();
