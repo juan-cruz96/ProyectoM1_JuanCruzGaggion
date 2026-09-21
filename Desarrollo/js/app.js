@@ -37,6 +37,10 @@ tiras.forEach(function (tira, index) {
   botonBloquear.innerHTML = iconoAbierto;
   botonBloquear.setAttribute("aria-label", "Bloquear color");
 
+  // OCULTAR LOS CANDADOS INICIALMENTE
+
+  botonBloquear.style.display = "none";
+
   botonBloquear.addEventListener("click", function (event) {
 
     event.stopPropagation();
@@ -142,11 +146,21 @@ formulario.addEventListener("submit", function (event) {
     'input[name="color-cantidad"]:checked'
   );
 
-  const cantidad = Number(cantidadSeleccionada.value);
-
   const formatoSeleccionado = document.querySelector(
     'input[name="formato-color"]:checked'
   );
+
+  // VERIFICAR QUE SE HAYAN SELECCIONADO AMBAS OPCIONES
+
+  if (!cantidadSeleccionada || !formatoSeleccionado) {
+
+    alert("Seleccioná el formato y la cantidad de colores.");
+
+    return;
+
+  }
+
+  const cantidad = Number(cantidadSeleccionada.value);
 
   const formato = formatoSeleccionado.value;
 
@@ -196,17 +210,23 @@ formulario.addEventListener("submit", function (event) {
 
     // MOSTRAR LA CANTIDAD DE COLORES SELECCIONADA
 
+    const candado = tira.querySelector(".boton-bloquear");
+
     if (index < cantidad) {
 
       tira.style.display = "block";
 
       coloresChiquitos[index].style.display = "block";
 
+      candado.style.display = "flex";
+
     } else {
 
       tira.style.display = "none";
 
       coloresChiquitos[index].style.display = "none";
+
+      candado.style.display = "none";
 
     }
 
@@ -238,11 +258,11 @@ opcionesFormato.forEach(function (opcion) {
 
       if (opcion.value === "hex") {
 
-        codigo.textContent = tira.dataset.hex;
+        codigo.textContent = tira.dataset.hex || "";
 
       } else {
 
-        codigo.textContent = tira.dataset.hsl;
+        codigo.textContent = tira.dataset.hsl || "";
 
       }
 
@@ -266,21 +286,33 @@ opcionesCantidad.forEach(function (opcion) {
 
     tiras.forEach(function (tira, index) {
 
+      const candado = tira.querySelector(".boton-bloquear");
+
       if (index < cantidad) {
+
+        // MOSTRAR LA TIRA Y SU CANDADO
 
         tira.style.display = "block";
 
         coloresChiquitos[index].style.display = "block";
 
+        candado.style.display = "flex";
+
       } else {
+
+        // OCULTAR LA TIRA Y SU CANDADO
 
         tira.style.display = "none";
 
         coloresChiquitos[index].style.display = "none";
 
+        candado.style.display = "none";
+
       }
 
     });
+
+    // AJUSTAR LAS COLUMNAS DE AMBAS PALETAS
 
     listaColores.style.gridTemplateColumns =
       `repeat(${cantidad}, 1fr)`;
@@ -302,6 +334,14 @@ tiras.forEach(function (tira) {
 
     const codigo = tira.querySelector(".color-code");
 
+    // EVITAR COPIAR UN CODIGO VACIO
+
+    if (!codigo.textContent) {
+
+      return;
+
+    }
+
     navigator.clipboard.writeText(codigo.textContent)
       .then(function () {
 
@@ -321,6 +361,4 @@ tiras.forEach(function (tira) {
 
 });
 
-// GENERAR UNA PALETA INICIAL AL CARGAR LA PAGINA
-
-formulario.requestSubmit();
+// NO GENERAR UNA PALETA AUTOMATICAMENTE AL CARGAR LA PAGINA
