@@ -1,9 +1,13 @@
-
 const formulario = document.querySelector("#formularioPaleta");
+
 const tiras = document.querySelectorAll(".tira-color");
+
 const listaColores = document.querySelector("#listaColores");
+
 const coloresChiquitos = document.querySelectorAll(".paleta-chiquita span");
+
 const paletaChiquita = document.querySelector(".paleta-chiquita");
+
 const toast = document.querySelector("#toast");
 
 // ARRAY PARA GUARDAR LOS BLOQUEOS
@@ -152,13 +156,15 @@ formulario.addEventListener("submit", function (event) {
 
   // VERIFICAR QUE SE HAYAN SELECCIONADO AMBAS OPCIONES
 
-  if (!cantidadSeleccionada || !formatoSeleccionado) {
+ if (!formatoSeleccionado) {
+  mostrarToast("Seleccioná un formato de color.", "error");
+  return;
+}
 
-    alert("Seleccioná el formato y la cantidad de colores.");
-
-    return;
-
-  }
+if (!cantidadSeleccionada) {
+  mostrarToast("Seleccioná la cantidad de colores.", "error");
+  return;
+}
 
   const cantidad = Number(cantidadSeleccionada.value);
 
@@ -328,6 +334,25 @@ opcionesCantidad.forEach(function (opcion) {
 
 let temporizadorToast;
 
+function mostrarToast(mensaje, tipo) {
+
+  toast.textContent = mensaje;
+
+  toast.classList.remove("success", "error");
+
+  toast.classList.add(tipo);
+  toast.classList.add("visible");
+
+  clearTimeout(temporizadorToast);
+
+  temporizadorToast = setTimeout(function () {
+
+    toast.classList.remove("visible");
+
+  }, 2000);
+
+}
+
 tiras.forEach(function (tira) {
 
   tira.addEventListener("click", function () {
@@ -343,22 +368,13 @@ tiras.forEach(function (tira) {
     }
 
     navigator.clipboard.writeText(codigo.textContent)
-      .then(function () {
+  .then(function () {
 
-        toast.classList.add("visible");
+    mostrarToast("¡Color copiado!", "success");
 
-        clearTimeout(temporizadorToast);
-
-        temporizadorToast = setTimeout(function () {
-
-          toast.classList.remove("visible");
-
-        }, 2000);
-
-      });
+  });
 
   });
 
 });
 
-// NO GENERAR UNA PALETA AUTOMATICAMENTE AL CARGAR LA PAGINA
