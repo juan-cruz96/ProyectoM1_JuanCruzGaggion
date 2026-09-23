@@ -1,5 +1,5 @@
 
-# Colorfly Studio 
+# Colorfly Studio
 
 ## Generador de paletas de colores
 
@@ -7,56 +7,64 @@ Colorfly Studio es una aplicación web estática e interactiva que permite gener
 
 El proyecto fue desarrollado como parte del Challenge del Módulo 1 de Full Stack JavaScript, utilizando HTML, CSS y JavaScript puro.
 
-La aplicación permite explorar diferentes combinaciones de colores, bloquear los que se desean conservar y copiar sus códigos para utilizarlos en otros proyectos.
+La aplicación permite explorar diferentes combinaciones de colores, bloquear aquellos que se desean conservar y copiar sus códigos para utilizarlos en proyectos de diseño y desarrollo web.
 
 ---
 
-## Demo
+## 1. Demo y repositorio
 
+**[Ver aplicación en GitHub Pages](https://juan-cruz96.github.io/ProyectoM1_JuanCruzGaggion/)**
 
----
-
-## Funcionalidades
-
-- Generación de paletas de 6, 8 o 9 colores aleatorios.
-- Selección del formato de visualización HEX o HSL.
-- Conversión de colores HSL a HEX.
-- Cambio dinámico entre formatos sin modificar los colores generados.
-- Cambio de cantidad de colores sin necesidad de generar una nueva paleta.
-- Bloqueo individual de colores mediante botones con íconos SVG.
-- Conservación de los colores bloqueados al generar una nueva paleta.
-- Copia de códigos de color al portapapeles.
-- Notificación visual al copiar un color.
-- Representación secundaria de la paleta en formato reducido.
-- Transiciones suaves durante los cambios de color.
+**[Ver repositorio en GitHub](https://github.com/juan-cruz96/ProyectoM1_JuanCruzGaggion)**
 
 ---
 
-## Tecnologías utilizadas
+## 2. Funcionalidades
+
+La aplicación permite realizar las siguientes acciones:
+
+- Generar paletas de 6, 8 o 9 colores aleatorios.
+- Seleccionar el formato de visualización HEX o HSL.
+- Convertir los colores generados en HSL a formato HEX.
+- Cambiar entre ambos formatos sin modificar los colores de la paleta.
+- Modificar la cantidad de colores sin necesidad de generar una nueva combinación.
+- Bloquear individualmente los colores que se desean conservar.
+- Generar nuevas paletas manteniendo los colores bloqueados.
+- Desbloquear colores para permitir que vuelvan a cambiar.
+- Copiar los códigos de color al portapapeles.
+- Visualizar notificaciones de confirmación o error.
+- Visualizar una representación secundaria de la paleta en formato reducido.
+- Disfrutar de transiciones suaves durante los cambios de color.
+
+---
+
+## 3. Tecnologías utilizadas
 
 | Tecnología | Utilización |
 |---|---|
 | HTML5 | Estructura y contenido de la aplicación. |
-| CSS3 | Diseño visual, distribución de elementos y animaciones. |
-| JavaScript | Generación de colores, eventos y manipulación del DOM. |
+| CSS3 | Diseño visual, distribución de elementos y transiciones. |
+| JavaScript | Generación de colores, manejo de eventos y manipulación del DOM. |
 | Git | Control de versiones del proyecto. |
 | GitHub | Alojamiento del código fuente. |
-| GitHub Pages | Publicación de la aplicación web. |
+| GitHub Pages | Publicación y despliegue de la aplicación. |
 
-El proyecto se desarrolló sin utilizar frameworks de JavaScript.
+El proyecto fue desarrollado sin utilizar frameworks de JavaScript.
 
 ---
 
-## Instrucciones de uso
+## 4. Instrucciones de uso
 
-### 1. Seleccionar el formato
+### 4.1. Seleccionar el formato
 
 Elegir el formato en el que se desean visualizar los códigos de color:
 
 - **HEX:** representación hexadecimal, por ejemplo `#DAE251`.
 - **HSL:** representación mediante tono, saturación y luminosidad, por ejemplo `hsl(64, 70%, 60%)`.
 
-### 2. Seleccionar la cantidad de colores
+El formato puede modificarse después de generar una paleta sin alterar los colores existentes.
+
+### 4.2. Seleccionar la cantidad de colores
 
 Elegir entre las siguientes opciones:
 
@@ -64,13 +72,17 @@ Elegir entre las siguientes opciones:
 - 8 colores.
 - 9 colores.
 
-### 3. Generar una paleta
+La aplicación adapta la cantidad de tiras visibles y su distribución según la opción seleccionada.
+
+### 4.3. Generar una paleta
 
 Presionar el botón **Generar paleta**.
 
-La aplicación generará una combinación aleatoria y mostrará cada color junto con su código correspondiente.
+La aplicación generará una combinación aleatoria de colores y mostrará cada uno junto con su código correspondiente.
 
-### 4. Bloquear colores
+Para generar otra combinación, volver a presionar el botón.
+
+### 4.4. Bloquear colores
 
 Presionar el candado ubicado en la parte superior de una tira para bloquear ese color.
 
@@ -78,17 +90,151 @@ Al generar una nueva paleta, los colores bloqueados permanecerán sin modificaci
 
 Para desbloquear un color, volver a presionar su candado.
 
-### 5. Copiar un código
+### 4.5. Copiar un código
 
 Hacer clic sobre una tira de color para copiar su código al portapapeles.
 
 La aplicación mostrará una notificación visual confirmando que el código fue copiado.
 
+### 4.6. Mensajes de validación
+
+Para generar una paleta, es necesario seleccionar un formato y una cantidad de colores.
+
+Si falta alguna de estas opciones, la aplicación mostrará una notificación indicando qué selección debe realizar el usuario.
+
 ---
 
-## Decisiones técnicas
+## 5. Cómo ejecutar el proyecto localmente
 
-### Generación de colores
+### Requisitos
+
+Para ejecutar Colorfly Studio se necesita:
+
+- Un navegador web actualizado.
+- Visual Studio Code (opcional).
+- La extensión Live Server de Visual Studio Code (opcional).
+
+No es necesario instalar dependencias, ejecutar un backend ni configurar una base de datos.
+
+### Paso 1. Descargar el proyecto
+
+Ingresar al repositorio de GitHub:
+
+https://github.com/juan-cruz96/ProyectoM1_JuanCruzGaggion
+
+Seleccionar **Code → Download ZIP** y descomprimir el archivo.
+
+También se puede clonar el repositorio utilizando Git:
+
+```bash
+git clone https://github.com/juan-cruz96/ProyectoM1_JuanCruzGaggion.git
+```
+
+### Paso 2. Abrir el proyecto
+
+Abrir la carpeta descargada en Visual Studio Code.
+
+La carpeta principal contiene el archivo `index.html` y las carpetas correspondientes al desarrollo y la documentación.
+
+### Paso 3. Ejecutar la aplicación
+
+Abrir el archivo `index.html` en un navegador web.
+
+También se puede utilizar Live Server:
+
+1. Abrir `index.html` en Visual Studio Code.
+2. Hacer clic derecho sobre el archivo.
+3. Seleccionar **Open with Live Server**.
+4. La aplicación se abrirá en el navegador.
+
+Se recomienda utilizar Live Server para probar las funcionalidades relacionadas con el portapapeles.
+
+---
+
+## 6. Pasos para realizar el despliegue
+
+La aplicación se publica mediante GitHub Pages, utilizando el repositorio de GitHub.
+
+### Paso 1. Preparar el repositorio
+
+Crear un repositorio en GitHub y agregar los archivos del proyecto.
+
+### Paso 2. Inicializar Git
+
+Desde la terminal, dentro de la carpeta principal del proyecto, ejecutar:
+
+```bash
+git init
+```
+
+Este comando inicializa un repositorio Git local para comenzar a registrar los cambios del proyecto.
+
+### Paso 3. Registrar los archivos
+
+Agregar los archivos al área de preparación:
+
+```bash
+git add .
+```
+
+Crear un commit:
+
+```bash
+git commit -m "Estructura inicial del proyecto"
+```
+
+Los commits permiten conservar un historial de las modificaciones realizadas durante el desarrollo.
+
+### Paso 4. Conectar el repositorio local con GitHub
+
+Agregar la dirección del repositorio remoto:
+
+```bash
+git remote add origin https://github.com/juan-cruz96/ProyectoM1_JuanCruzGaggion.git
+```
+
+### Paso 5. Subir el proyecto
+
+Establecer la rama principal y realizar la primera subida:
+
+```bash
+git branch -M main
+git push -u origin main
+```
+
+Para subir modificaciones posteriores, se pueden utilizar los siguientes comandos:
+
+```bash
+git add .
+git commit -m "Descripcion de los cambios"
+git push
+```
+
+### Paso 6. Configurar GitHub Pages
+
+1. Ingresar al repositorio en GitHub.
+2. Abrir la sección **Settings**.
+3. Seleccionar **Pages**.
+4. En **Build and deployment**, seleccionar **Deploy from a branch**.
+5. Elegir la rama `main`.
+6. Seleccionar la carpeta `/ (root)`.
+7. Guardar la configuración.
+
+### Paso 7. Verificar el despliegue
+
+Esperar a que GitHub Pages finalice la publicación.
+
+Abrir la dirección de la aplicación:
+
+https://juan-cruz96.github.io/ProyectoM1_JuanCruzGaggion/
+
+Comprobar que los archivos HTML, CSS y JavaScript se carguen correctamente y que las funcionalidades de la aplicación se encuentren operativas.
+
+---
+
+## 7. Decisiones técnicas
+
+### 7.1. Generación de colores
 
 La aplicación genera colores aleatorios en formato HSL mediante la función `generarColorHsl()`.
 
@@ -98,13 +244,15 @@ Cada color contiene tres valores:
 - **S (Saturation):** saturación del color.
 - **L (Lightness):** luminosidad del color.
 
-Los valores se generan utilizando `Math.random()` y `Math.floor()`.
+Los valores aleatorios se generan utilizando `Math.random()` y `Math.floor()`.
 
 Para obtener la representación hexadecimal, se utiliza la función `convertirHslAHex()`, que realiza la conversión de HSL a RGB y posteriormente a HEX.
 
-Esto permite que ambos formatos representen el mismo color y que el usuario pueda alternar entre ellos sin modificar la combinación generada.
+Se decidió generar inicialmente los colores en HSL y obtener su representación HEX a partir de los mismos valores.
 
-### Renderizado dinámico
+De esta manera, ambas representaciones corresponden al mismo color y es posible alternar entre formatos sin generar una combinación diferente.
+
+### 7.2. Renderizado de la paleta
 
 La aplicación utiliza JavaScript para modificar los elementos HTML mediante el DOM.
 
@@ -112,9 +260,11 @@ Se dispone de nueve tiras de colores en el documento HTML.
 
 Según la cantidad seleccionada por el usuario, JavaScript muestra u oculta las tiras correspondientes y actualiza la distribución de columnas mediante CSS Grid.
 
+Esta solución permite utilizar la misma estructura HTML para representar paletas de diferentes tamaños.
+
 La paleta secundaria utiliza los mismos colores que la principal, manteniendo ambas representaciones sincronizadas.
 
-### Almacenamiento de los formatos
+### 7.3. Almacenamiento de los formatos
 
 Cada tira almacena sus códigos HEX y HSL mediante atributos `data-*` del HTML.
 
@@ -122,7 +272,7 @@ Esto permite recuperar los valores de cada color sin necesidad de volver a gener
 
 De esta manera, el usuario puede cambiar el formato de visualización sin modificar los colores de la paleta.
 
-### Bloqueo de colores
+### 7.4. Bloqueo de colores
 
 Se utiliza un array llamado `coloresBloqueados` para registrar el estado de cada tira.
 
@@ -137,108 +287,99 @@ Si el color está desbloqueado, genera uno nuevo. Si está bloqueado, conserva l
 
 Los botones de bloqueo se crean dinámicamente mediante JavaScript y utilizan íconos SVG para representar sus diferentes estados.
 
-### Interacción y accesibilidad
+### 7.5. Interacción y experiencia de usuario
 
-La interfaz utiliza elementos HTML semánticos como `header`, `main`, `section`, `form`, `fieldset`, `legend` y `button`.
+Se utilizaron controles de tipo radio para seleccionar el formato y la cantidad de colores.
 
-Los controles permiten seleccionar la cantidad de colores y el formato de visualización.
+Los controles se agruparon mediante `fieldset` y `legend`, y se personalizaron visualmente utilizando CSS.
 
-Se incorporaron etiquetas descriptivas en los botones de bloqueo, estilos de foco visible y notificaciones visuales para proporcionar información sobre las acciones realizadas.
+Para brindar información sobre las acciones del usuario, se incorporó un sistema de notificaciones mediante una función llamada `mostrarToast()`.
 
-También se utilizaron transiciones CSS para suavizar los cambios de color.
+La función permite mostrar mensajes de confirmación o error sin interrumpir la navegación mediante ventanas de alerta del navegador.
 
----
+También se incorporaron transiciones CSS para suavizar los cambios de color.
 
-## Cómo ejecutar el proyecto localmente
+### 7.6. Accesibilidad
 
-### Requisitos
+Se utilizaron elementos HTML semánticos como `header`, `main`, `section`, `form`, `fieldset`, `legend` y `button`.
 
-- Un navegador web actualizado.
-- Visual Studio Code (opcional).
-- Extensión Live Server de Visual Studio Code (opcional).
+Los controles del formulario cuentan con etiquetas asociadas mediante elementos `label`.
 
-No es necesario instalar dependencias ni configurar una base de datos.
+Los botones de bloqueo incluyen atributos `aria-label` que permiten identificar su función y reflejar su estado.
 
-### Instalación
-
-**1. Clonar el repositorio**
-
-Abrir una terminal y ejecutar:
-
-```bash
-git clone https://github.com/juan-cruz96/ProyectoM1_JuanCruzGaggion.git
-```
-
-**2. Abrir el proyecto**
-
-Ingresar a la carpeta descargada y abrirla en Visual Studio Code.
-
-**3. Ejecutar la aplicación**
-
-Abrir el archivo `index.html` en el navegador.
-
-También se puede utilizar la extensión Live Server para ejecutar el proyecto mediante un servidor local.
+También se incorporaron estilos de foco visible para facilitar la navegación mediante teclado.
 
 ---
 
-## Despliegue en GitHub Pages
+## 8. Mejoras futuras
 
-Para publicar la aplicación:
+Durante el desarrollo se identificaron posibles mejoras que podrían incorporarse en futuras versiones de Colorfly Studio.
 
-1. Subir los archivos del proyecto a un repositorio de GitHub.
-2. Ingresar a la sección **Settings** del repositorio.
-3. Seleccionar **Pages**.
-4. En **Build and deployment**, seleccionar **Deploy from a branch**.
-5. Elegir la rama `main` y la carpeta `/ (root)`.
-6. Guardar los cambios.
-7. Esperar a que GitHub Pages publique la aplicación.
-8. Acceder al enlace generado y comprobar su funcionamiento.
+### Diseño responsive
 
----
+Adaptar la distribución de la interfaz para mejorar su visualización en dispositivos móviles y pantallas de diferentes tamaños.
 
-## Estructura del proyecto
+### Generación dinámica de elementos
 
-```text
-ProyectoM1_JuanCruzGaggion/
-│
-├── index.html
-│
-├── Desarrollo/
-│   ├── css/
-│   │   └── styles.css
-│   ├── js/
-│   │   └── app.js
-│   └── fonts/
-│
-├── Documentacion/
-│   ├── capturas/
-│   └── uso-ia/
-│
-└── README.md
-```
+Modificar el sistema de renderizado para que JavaScript cree las tiras de colores según la cantidad seleccionada, en lugar de utilizar nueve elementos previamente definidos en el HTML.
+
+### Guardado de paletas
+
+Incorporar una funcionalidad que permita guardar combinaciones de colores utilizando `localStorage`, para recuperarlas posteriormente desde el navegador.
+
+### Exportación de paletas
+
+Agregar la posibilidad de descargar una paleta generada como imagen o exportar sus códigos de color.
+
+### Accesibilidad visual
+
+Incorporar una función que ajuste automáticamente el contraste de los códigos según el color de fondo y mejorar la lectura de los códigos en pantallas pequeñas.
 
 ---
 
-## Capturas de pantalla
+## 9. Documentación del uso de inteligencia artificial
 
-Las capturas del funcionamiento de la aplicación se encuentran en la carpeta `Documentacion/capturas`.
+Durante el desarrollo del proyecto se utilizó ChatGPT como herramienta de asistencia y aprendizaje.
 
-Incluyen evidencia de:
+Se utilizó principalmente para:
 
-- Generación de paletas de 6, 8 y 9 colores.
-- Visualización de códigos HEX y HSL.
-- Bloqueo individual de colores.
-- Copia de códigos y notificación de confirmación.
+- Comprender conceptos básicos de JavaScript.
+- Estudiar la manipulación del DOM y el manejo de eventos.
+- Comprender la generación aleatoria de colores.
+- Implementar y analizar la conversión de HSL a HEX.
+- Resolver errores durante el desarrollo.
+- Incorporar funcionalidades adicionales, como el bloqueo de colores y las notificaciones.
+- Revisar alternativas de implementación y mejorar los estilos visuales.
+
+El uso de inteligencia artificial se documenta mediante capturas de los prompts utilizados y sus respuestas.
+
+Las capturas y la descripción de las consultas se encuentran en:
+
+`Documentacion/uso-ia/`
+
+La documentación permite identificar cómo se utilizó la asistencia de IA durante las distintas etapas del proyecto.
 
 ---
 
-## Uso de inteligencia artificial
+## 10. Flujo de la aplicación
 
-Durante el desarrollo del proyecto se utilizó ChatGPT como herramienta de apoyo para comprender conceptos de JavaScript, resolver errores y estudiar diferentes alternativas de implementación.
+El funcionamiento principal de Colorfly Studio se documenta mediante capturas de pantalla.
 
-La asistencia incluyó explicaciones sobre manipulación del DOM, manejo de eventos, generación aleatoria de colores, conversión entre formatos y desarrollo de funcionalidades interactivas.
+El flujo de uso comprende las siguientes etapas:
 
-Los prompts utilizados y sus resultados se documentan en la carpeta `Documentacion/uso-ia`.
+1. Acceso a la aplicación.
+2. Selección del formato y la cantidad de colores.
+3. Generación de una paleta.
+4. Cambio entre los formatos HEX y HSL.
+5. Bloqueo individual de colores.
+6. Generación de una nueva paleta conservando los colores bloqueados.
+7. Copia de un código de color al portapapeles.
+
+Las capturas correspondientes se encuentran en la carpeta:
+
+`Documentacion/capturas/`
+
+Estas imágenes permiten visualizar el funcionamiento de la aplicación y comprobar las principales interacciones implementadas.
 
 ---
 
@@ -246,4 +387,4 @@ Los prompts utilizados y sus resultados se documentan en la carpeta `Documentaci
 
 **Juan Cruz Gaggion**
 
-Challenge Módulo 1 — Full Stack JavaScript.
+Challenge Módulo 1 — Full Stack 2026
