@@ -52,8 +52,8 @@ Los rangos son válidos para CSS. Como saturación y luminosidad pueden valer `0
 Apliqué estos métodos en la generación de HSL y entendí por qué se utiliza `360` para obtener tonos entre `0` y `359`, y `101` para obtener porcentajes entre `0` y `100` inclusive.
 
 ### Capturas
-<./capturas/promt 1.png>
-<./capturas/promt 1.1.png>
+![Respuesta del prompt 1](<./capturas/promt 1.png>)
+![Respuesta del prompt 1](<./capturas/promt 1.1.png>)
 ---
 
 ## Consulta 02 — Actualización de las tiras mediante el DOM
@@ -93,9 +93,9 @@ Buscar `.color-code` **dentro de `tira`** permite actualizar el texto correcto s
 Corregí el error de confundir `tiras` y `tira` y logré actualizar individualmente los fondos y los códigos. La versión actual muestra u oculta nueve tiras ya declaradas en HTML; no crea un número variable de tiras desde cero.
 
 ### Capturas
-<./capturas/promt 2.png>
-<./capturas/promt 2.2.png>
-<./capturas/promt 2.3.png>
+![Respuesta del prompt 2](<./capturas/promt 2.png>)
+![Respuesta del prompt 2](<./capturas/promt 2.2.png>)
+![Respuesta del prompt 2](<./capturas/promt 2.3.png>)
 ---
 
 ## Consulta 03 — Conversión HSL → RGB → HEX
@@ -136,9 +136,9 @@ function convertirAHex(numero) {
 Implementé la función `convertirHslAHex()` y entendí para qué sirven los pasos de normalización, conversión de canales y representación hexadecimal.
 
 ### Capturas
-<./capturas/promt 3.png>
-<./capturas/promt 3.1.png>
-<./capturas/promt 3.3.png>
+![Respuesta del prompt 3](<./capturas/promt 3.png>)
+![Respuesta del prompt 3](<./capturas/promt 3.1.png>)
+![Respuesta del prompt 3](<./capturas/promt 3.3.png>)
 ---
 
 ## Consulta 04 — Bloqueo individual de colores
@@ -179,9 +179,9 @@ El botón del candado está contenido dentro del `<li>` que también escucha cli
 Incorporé candados individuales, mantuve sincronizadas la paleta grande y la pequeña y comprendí el uso de booleanos, eventos y propagación de clics. Al reducir la cantidad de colores, los estados de las tiras ocultas permanecen en el array hasta que vuelvan a mostrarse.
 
 ### Capturas
-<./capturas/promt 4.png>
-<./capturas/promt 4.1.png>
-<./capturas/promt 4.2.png>
+![Respuesta del prompt 4](<./capturas/promt 4.png>)
+![Respuesta del prompt 4](<./capturas/promt 4.1.png>)
+![Respuesta del prompt 4](<./capturas/promt 4.2.png>)
 
 ---
 
@@ -234,8 +234,8 @@ navigator.clipboard.writeText(codigo.textContent)
 Reemplacé el `alert()` por un toast reutilizable con variantes visuales de éxito y error, y separé la validación del formato de la validación de cantidad. Aprendí a utilizar `classList`, `setTimeout()` y `.then()`.
 
 ### Capturas
-<./capturas/promt 5.png>
-<./capturas/promt 5.1.png>
+![Respuesta del prompt 5](<./capturas/promt 5.png>)
+![Respuesta del prompt 5](<./capturas/promt 5.1.png>)
 
 ---
 
@@ -276,8 +276,8 @@ Es razonable documentar estas limitaciones como mejoras futuras, siempre que la 
 Decidí mantener una implementación sencilla en esta primera versión y documentar posibles mejoras, entre ellas una grilla creada íntegramente desde JavaScript, adaptación a más tamaños de pantalla, un ajuste de accesibilidad y guardado de paletas. La idea de `localStorage` se investigó, pero no se incorporó a la versión entregada.
 
 ### Capturas
-<./capturas/promt 6.png>
-<./capturas/promt 6.1.png>
+![Respuesta del prompt 6](<./capturas/promt 6.png>)
+![Respuesta del prompt 6](<./capturas/promt 6.1.png>)
 
 ---
 
