@@ -355,7 +355,7 @@ El uso de inteligencia artificial se documenta mediante capturas de los prompts 
 
 Las capturas y la descripción de las consultas se encuentran en:
 
-`Documentacion/uso-ia/`
+[Ver documentación del uso de IA](Documentacion/IA/ia.md)
 
 La documentación permite identificar cómo se utilizó la asistencia de IA durante las distintas etapas del proyecto.
 
@@ -375,9 +375,7 @@ El flujo de uso comprende las siguientes etapas:
 6. Generación de una nueva paleta conservando los colores bloqueados.
 7. Copia de un código de color al portapapeles.
 
-Las capturas correspondientes se encuentran en la carpeta:
-
-`Documentacion/capturas/`
+[Ver GIFs del funcionamiento de la APP](Documentacion/GIFs%20flujo%20app)
 
 Estas imágenes permiten visualizar el funcionamiento de la aplicación y comprobar las principales interacciones implementadas.
 
